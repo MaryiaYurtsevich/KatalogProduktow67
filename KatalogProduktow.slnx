@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ConsoleApp2/ConsoleApp2/ConsoleApp2.csproj" />
+  <Project Path="ConsoleApp2/TestProject1/TestProject1.csproj" />
+  <Project Path="KatalogProduktow/KatalogProduktow.csproj" />
+  <Project Path="KatalogWPF/KatalogWPF.csproj" />
+  <Project Path="MauiApp1/MauiApp1/MauiApp1.csproj" />
+</Solution>
