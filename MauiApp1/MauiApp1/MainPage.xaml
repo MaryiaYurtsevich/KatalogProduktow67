@@ -4,7 +4,28 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <CollectionView
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Entry
+                x:Name="nazwaEntry"
+                Placeholder="Wyszukaj produkt..."/>
+            <Entry
+                x:Name="cenaEntry"
+                Placeholder="Wyszukaj po cenie..."/>
+            <Picker
+                x:Name="kategoriaPicker"
+                Title="Wybierz kategorię...">
+                <Picker.Items>
+                    <x:String>Jedzenie</x:String>
+                    <x:String>Napoje</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+                Text="Szukaj"
+                Clicked="OnSearchButtonClicked"/>
+
+            <CollectionView
             x:Name="ProductsCollection">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -20,13 +41,14 @@
                         <Label
                             Text="{Binding Quantity}"
                             Grid.Column="2" />
-                            <Label
+                        <Label
                             Text="{Binding Category}"
                             Grid.Column="3" />
-                            </Grid>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>

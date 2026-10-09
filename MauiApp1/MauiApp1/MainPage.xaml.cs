@@ -20,6 +20,17 @@ public partial class MainPage : ContentPage
     };
         BindingContext = this;
         ProductsCollection.ItemsSource = produkty;
+    }
+    private void OnSearchButtonClicked(object sender, EventArgs e)
+    {
+        string nazwa = nazwaEntry.Text;
+        double cena = double.Parse(cenaEntry.Text);
+        string kategoria = kategoriaPicker.SelectedItem.ToString();
+
+        Produkt nowy = new Produkt();
+        nowy.Name = nazwa;
+        nowy.Price = cena;
+        nowy.Category = kategoria;
 
     }
 }

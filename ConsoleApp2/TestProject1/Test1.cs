@@ -1,4 +1,4 @@
-﻿using ConsoleApp2;
+﻿using KatalogProduktow;
 
 namespace TestProject1
 {

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KatalogProduktow\KatalogProduktow.csproj" />
     <ProjectReference Include="..\ConsoleApp2\ConsoleApp2.csproj" />
   </ItemGroup>
 
