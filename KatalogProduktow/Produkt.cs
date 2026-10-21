@@ -6,11 +6,11 @@ namespace KatalogProduktow
 {
     public class Produkt
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public double Price { get; set; }
-        public string Category { get; set; }
+        public string? Category { get; set; }
         public int Quantity { get; set; }
-        public double WartoscMagazynu
+        public virtual double WartoscMagazynu
         {
             get { return Price * Quantity; }
         }
@@ -38,5 +38,14 @@ namespace KatalogProduktow
                 }
             }
         }
+           
+       public override string ToString()
+        {
+            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " + $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+        }
+        public virtual string Opis()
+        {
+            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +  $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+        }
     }
-}
+ }

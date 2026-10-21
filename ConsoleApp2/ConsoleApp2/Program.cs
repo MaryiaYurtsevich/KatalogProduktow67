@@ -8,14 +8,14 @@ List<Produkt> produkty = new List<Produkt>
         {
             new Produkt { Name = "Panini", Price = 15.00, Category = "kategoria1", Quantity = 5 },
             new Produkt { Name = "Kawa", Price = 17.50, Category = "kategoria2", Quantity = 3 },
-            new Produkt { Name = "Herbata", Price = 6767.00, Category = "kategoria2", Quantity = 8 },
-            new Produkt { Name = "Krewetka", Price = 8500.00, Category = "kategoria1", Quantity = 2 },
+            new Produkt { Name = "Herbata", Price = 67.00, Category = "kategoria2", Quantity = 8 },
+            new Produkt { Name = "Krewetka", Price = 85.00, Category = "kategoria1", Quantity = 2 },
             new Produkt { Name = "Kasza", Price = 100.00, Category = "kategoria1", Quantity = 40 }
 
         };
 //tworze slownik nazwa kategorii <-> lista produktów w tej kategorii
 var produktyWKategoriach = new Dictionary<string, List<Produkt>>();
-//idziemy po globalnej tablicy produktów
+//idziemy po globalnej tablicy produktów   
 foreach (var produkt in produkty)
 {
     //sprawdzamy czy istnieje kategoria w slowniku o tej nazwie
