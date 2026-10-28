@@ -59,3 +59,18 @@ foreach (var produkt in produkty.OrderBy(produkt => produkt.Price))
 Produkt.SprawdzWartosc(produkty[0]);
 //sprawdz ceny wszystkich produktów
 Produkt.SprawdzCeny(produkty);
+
+
+//28.10.2026
+var produktyDziedziczone = new List<Produkt>
+{
+    new Produkt { Name = "Produkt1", Price = 10.0, Category = "Kategoria1", Quantity = 5 },
+    new Podzespol { Name = "Podzespol1", Price = 25.0, Category = "Kategoria2", Quantity = 2, Producent = "Producent1" },
+    //new Akcesorium { Name = "Akcesorium1", Price = 15.0, Category = "Kategoria2", Quantity = 3, Kolor = "Czerwony" },
+    new Usluga { Name = "Usluga1", Price = 20.0, Category = "Kategoria3", Quantity = 0 }
+};
+//który opis zobaczymy?
+foreach (var produkt in produktyDziedziczone)
+{
+    Console.WriteLine(produkt.Opis());
+}
