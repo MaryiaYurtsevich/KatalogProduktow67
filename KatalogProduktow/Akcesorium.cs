@@ -6,13 +6,13 @@ using System.Xml.Linq;
 
 namespace KatalogProduktow
 {
-    internal class Akcesorium
+    public class Akcesorium : Produkt
     {
         public string Kolor { get; set; }
 
         public override string Opis()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kolor: {Color}, Kategoria: {Category}, " +
+            return $"Nazwa: {Name}, Cena: {Price}, Kolor: {Kolor}, Kategoria: {Category}, " +
                  $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
         }
     }

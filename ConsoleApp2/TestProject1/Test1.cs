@@ -84,5 +84,56 @@ namespace TestProject1
             // Assert czy ilość produktów z ceną jest większą od zera równa całkowitej liczbie produktów
             Assert.AreEqual(produkty.Count, licznik, "Wszystkie produkty powinny mieć cenę większą od 0.");
         }
+
+            [TestMethod]
+            public void CzyOpisPodzespoluZawieraProducenta()
+            {
+                //arrange - przygotowujemy obiekt podzespołu
+                string nazwaProducenta = "Producent1";
+                var podzespol = new Podzespol
+                {
+                    Name = "Podzespol1",
+                    Price = 25.0,
+                    Category = "Kategoria2",
+                    Quantity = 2,
+                    Producent = nazwaProducenta
+                };
+                //act - sciagam opis do zmiennej
+                var opis = podzespol.Opis();
+                //assert - sprawdzam czy opis zawiera nazwę producenta
+                StringAssert.Contains(opis, nazwaProducenta, "Opis podzespołu powinien zawierać nazwę producenta.");
+            }
+            //napisz testy które sprawdzą czy:
+            //1. wartosc magazynu dla usługi jest poprawnie ustawiona (powinna być równa 0)
+            [TestMethod]
+            public void WartoscMagazynuDlaUslugi()
+            {
+                //arrange - przygotowujemy obiekt usługi
+                var usluga = new Usluga { Name = "Usluga1", Price = 20.0, Category = "Kategoria3", Quantity = 0 };
+                //act - sciagam wartosc magazynu do zmiennej
+                var wartoscMagazynu = usluga.WartoscMagazynu;
+                //assert - sprawdzam czy wartosc magazynu jest równa 0
+                Assert.AreEqual(0, wartoscMagazynu, "Wartość magazynu dla usługi powinna być równa 0.");
+            }
+            //2. czy opis akcesorium zawiera kolor akcesorium
+            [TestMethod]
+            public void CzyOpisAkcesoriumZawieraKolor()
+            {
+                //arrange - przygotowujemy obiekt akcesorium
+                string kolor = "Czerwony";
+                var akcesorium = new Akcesorium
+                {
+                    Name = "Akcesorium1",
+                    Price = 15.0,
+                    Category = "Kategoria2",
+                    Quantity = 3,
+                    Kolor = kolor
+                };
+                //act - sciagam opis do zmiennej
+                var opis = akcesorium.Opis();
+                //assert - sprawdzam czy opis zawiera kolor akcesorium
+                StringAssert.Contains(opis, kolor, "Opis akcesorium powinien zawierać kolor akcesorium.");
+            }
+
+        }
     }
-}

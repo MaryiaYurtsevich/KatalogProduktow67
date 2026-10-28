@@ -41,11 +41,14 @@ namespace KatalogProduktow
            
        public override string ToString()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " + $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +
+                $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
         }
+        //funkcja zwraca opis produktu
         public virtual string Opis()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +  $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +
+                $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
         }
     }
  }
