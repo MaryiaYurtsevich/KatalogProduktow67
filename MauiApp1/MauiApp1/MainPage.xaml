@@ -4,51 +4,70 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+        <VerticalStackLayout Padding="30,20" Spacing="15">
+
             <Entry
                 x:Name="nazwaEntry"
-                Placeholder="Wyszukaj produkt..."/>
+                Placeholder="Nazwa produktu" />
+
             <Entry
                 x:Name="cenaEntry"
-                Placeholder="Wyszukaj po cenie..."/>
+                Placeholder="Cena produktu"
+                Keyboard="Numeric" />
+
             <Picker
                 x:Name="kategoriaPicker"
-                Title="Wybierz kategorię...">
+                Title="Wybierz kategorię">
                 <Picker.Items>
                     <x:String>Jedzenie</x:String>
                     <x:String>Napoje</x:String>
                 </Picker.Items>
             </Picker>
+
+            <Button
+                Text="Dodaj produkt"
+                Clicked="DodajProdukt_Clicked" />
+
+            <Button
+                Text="Usuń zaznaczony produkt"
+                Clicked="UsunProdukt_Clicked" />
+
             <Button
                 Text="Szukaj"
-                Clicked="OnSearchButtonClicked"/>
+                Clicked="OnSearchButtonClicked" />
 
             <CollectionView
-            x:Name="ProductsCollection">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid
-                     ColumnDefinitions="2*, *, *, *" 
-                     Padding="10">
-                        <Label 
-                            Text="{Binding Name}"
-                            Grid.Column="0" />
-                        <Label 
-                            Text="{Binding Price, StringFormat='{0:F2} zł'}"
-                            Grid.Column="1" />
-                        <Label
-                            Text="{Binding Quantity}"
-                            Grid.Column="2" />
-                        <Label
-                            Text="{Binding Category}"
-                            Grid.Column="3" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                x:Name="ProductsCollection"
+                SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            ColumnDefinitions="2*,*,*,*"
+                            Padding="10">
+
+                            <Label
+                                Text="{Binding Name}"
+                                Grid.Column="0" />
+
+                            <Label
+                                Text="{Binding Price, StringFormat='{0:F2} zł'}"
+                                Grid.Column="1" />
+
+                            <Label
+                                Text="{Binding Quantity}"
+                                Grid.Column="2" />
+
+                            <Label
+                                Text="{Binding Category}"
+                                Grid.Column="3" />
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

@@ -1,14 +1,14 @@
 ﻿namespace MauiApp1;
 
 using KatalogProduktow;
+using System.Collections.ObjectModel;
+
 public partial class MainPage : ContentPage
 {
-
+    public ObservableCollection<Produkt> Produkty { get; set; }
     public MainPage()
     {
-        InitializeComponent();
-
-        List<Produkt> produkty = new List<Produkt>
+        Produkty = new ObservableCollection<Produkt>
 
         {
         new Produkt { Name = "Panini", Price = 15.00, Category = "Jedzenie", Quantity = 5 },
@@ -18,21 +18,38 @@ public partial class MainPage : ContentPage
         new Produkt { Name = "Kasza", Price = 100.00, Category = "Jedzenie", Quantity = 40 }
 
     };
+        InitializeComponent();
         BindingContext = this;
-        ProductsCollection.ItemsSource = produkty;
     }
-    private void OnSearchButtonClicked(object sender, EventArgs e)
+    private void Button_Clicked(object sender, EventArgs e)
     {
+
+    }
+    private void DodajProdukt_Clicked(object sender, EventArgs e)
+    {
+        //odczytujemy wartości z pól tekstowych
         string nazwa = nazwaEntry.Text;
         double cena = double.Parse(cenaEntry.Text);
-        string? kategoria = kategoriaPicker.SelectedItem.ToString();
+        string kategoria = kategoriaPicker.SelectedItem.ToString();
 
-        Produkt nowy = new Produkt();
-        nowy.Name = nazwa;
-        nowy.Price = cena;
-        nowy.Category = kategoria;
-
+        //tworzymy nową instancję produktu
+        Produkt nowyProdukt = new Produkt
+        {
+            Name = nazwa,
+            Price = cena,
+            Category = kategoria,
+            Quantity = 0 // domyślna ilość
+        };
+        Produkty.Add(nowyProdukt);
     }
+
+    private void UsunProdukt_Clicked(object sender, EventArgs e)
+    {
+        if (ProductsCollection.SelectedItem is Produkt wybranyProdukt)
+        {
+            Produkty.Remove(wybranyProdukt);
+        }
+    }
+
 }
 
-    
