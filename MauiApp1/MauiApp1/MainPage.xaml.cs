@@ -51,5 +51,15 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private void OnSearchButtonClicked(object sender, EventArgs e)
+    {
+        string nazwa = nazwaEntry.Text.Trim() ?? "";
+
+        var wyniki = Produkty.Where(p =>
+            p.Name.Contains(nazwa, StringComparison.OrdinalIgnoreCase));
+
+        ProductsCollection.ItemsSource = wyniki.ToList();
+    }
+
 }
 
