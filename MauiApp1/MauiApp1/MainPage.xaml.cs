@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 public partial class MainPage : ContentPage
 {
-    private readonly List<Produkt> bazaProduktow = new();
+
     public ObservableCollection<Produkt> widoczneProdukty { get; set; } = new ObservableCollection<Produkt>();
     public ObservableCollection<Produkt> Produkty { get; set; }
     public MainPage()
@@ -28,7 +28,7 @@ public partial class MainPage : ContentPage
     {
         widoczneProdukty.Clear();
         string kryteria = nameSearchBar.Text ?? string.Empty;
-        List<Produkt> znalezioneProdukty = Produkt.Szukaj(bazaProduktow, kryteria);
+        List<Produkt> znalezioneProdukty = Produkt.Szukaj(Produkty.ToList(), kryteria);
         foreach (var produkt in znalezioneProdukty)
         {
             widoczneProdukty.Add(produkt);
@@ -42,9 +42,12 @@ public partial class MainPage : ContentPage
     private void DodajProdukt_Clicked(object sender, EventArgs e)
     {
         //odczytujemy wartości z pól tekstowych
-        string nazwa = nazwaEntry.Text;
-        double cena = double.Parse(cenaEntry.Text);
-        string kategoria = kategoriaPicker.SelectedItem.ToString();
+        string nazwa = nazwaEntry.Text ?? "";
+        if (!double.TryParse(cenaEntry.Text, out double cena) || cena < 0)
+        {
+            return;
+        }
+        string kategoria = kategoriaPicker.SelectedItem?.ToString() ?? "";
 
         //tworzymy nową instancję produktu
         Produkt nowyProdukt = new Produkt
@@ -58,23 +61,21 @@ public partial class MainPage : ContentPage
         Odswiez();
     }
 
+
     private void UsunProdukt_Clicked(object sender, EventArgs e)
     {
         if (ProductsCollection.SelectedItem is Produkt wybranyProdukt)
         {
             Produkty.Remove(wybranyProdukt);
+            ProductsCollection.SelectedItem = null;
+            Odswiez();
         }
     }
 
+
     private void OnSearchButtonClicked(object sender, EventArgs e)
     {
-        string nazwa = nazwaEntry.Text?.Trim() ?? "";
-
-        var wyniki = Produkty.Where(p =>
-            p.Name.Contains(nazwa, StringComparison.OrdinalIgnoreCase));
-
-        ProductsCollection.ItemsSource = wyniki.ToList();
-
+        Odswiez();
     }
     private void nameSearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {

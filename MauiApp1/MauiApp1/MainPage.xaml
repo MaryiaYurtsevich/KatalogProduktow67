@@ -57,9 +57,9 @@
 
             <Label x:Name="iloscLabel" Text="Ilość produktów: 0" />
             <CollectionView
-                x:Name="ProductsCollection"
-                SelectionMode="Single">
-
+    x:Name="ProductsCollection"
+    ItemsSource="{Binding widoczneProdukty}"
+    SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
