@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 
 public partial class MainPage : ContentPage
 {
+    private readonly List<Produkt> bazaProduktow = new();
+    public ObservableCollection<Produkt> widoczneProdukty { get; set; } = new ObservableCollection<Produkt>();
     public ObservableCollection<Produkt> Produkty { get; set; }
     public MainPage()
     {
@@ -19,11 +21,23 @@ public partial class MainPage : ContentPage
 
     };
         InitializeComponent();
+        Odswiez();
         BindingContext = this;
+    }
+    private void Odswiez()
+    {
+        widoczneProdukty.Clear();
+        string kryteria = nameSearchBar.Text ?? string.Empty;
+        List<Produkt> znalezioneProdukty = Produkt.Szukaj(bazaProduktow, kryteria);
+        foreach (var produkt in znalezioneProdukty)
+        {
+            widoczneProdukty.Add(produkt);
+        }
+        iloscLabel.Text = $"Ilość produktów: {widoczneProdukty.Count}";
     }
     private void Button_Clicked(object sender, EventArgs e)
     {
-
+        Odswiez();
     }
     private void DodajProdukt_Clicked(object sender, EventArgs e)
     {
@@ -41,6 +55,7 @@ public partial class MainPage : ContentPage
             Quantity = 0 // domyślna ilość
         };
         Produkty.Add(nowyProdukt);
+        Odswiez();
     }
 
     private void UsunProdukt_Clicked(object sender, EventArgs e)

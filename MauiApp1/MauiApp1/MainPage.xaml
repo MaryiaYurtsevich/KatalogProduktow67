@@ -4,20 +4,30 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30,20" Spacing="15">
+        <VerticalStackLayout Padding="30,20" Spacing="15" Background="LightPink">
+            <SearchBar x:Name="nameSearchBar" Placeholder="Wpisz nazwę produktu" TextChanged="nameSearchBar_TextChanged"/>
 
+            <Label
+                Text="Katalog produktów"
+                FontSize="24"
+                HorizontalOptions="Center"
+                TextColor="HotPink"
+                />
             <Entry
                 x:Name="nazwaEntry"
-                Placeholder="Nazwa produktu" />
+                Placeholder="Nazwa produktu"
+                WidthRequest="500"/>
 
             <Entry
                 x:Name="cenaEntry"
                 Placeholder="Cena produktu"
-                Keyboard="Numeric" />
+                Keyboard="Numeric" 
+                WidthRequest="500"/>
 
             <Picker
                 x:Name="kategoriaPicker"
-                Title="Wybierz kategorię">
+                Title="Wybierz kategorię"
+                WidthRequest="500">
                 <Picker.Items>
                     <x:String>Jedzenie</x:String>
                     <x:String>Napoje</x:String>
@@ -26,15 +36,21 @@
 
             <Button
                 Text="Dodaj produkt"
-                Clicked="DodajProdukt_Clicked" />
+                Clicked="DodajProdukt_Clicked" 
+                BackgroundColor="HotPink"
+                WidthRequest="400"/>
 
             <Button
                 Text="Usuń zaznaczony produkt"
-                Clicked="UsunProdukt_Clicked" />
+                Clicked="UsunProdukt_Clicked" 
+                BackgroundColor="HotPink"
+                WidthRequest="400"/>
 
             <Button
                 Text="Szukaj"
-                Clicked="OnSearchButtonClicked" />
+                Clicked="OnSearchButtonClicked" 
+                BackgroundColor="HotPink"
+                WidthRequest="400"/>
 
             <CollectionView
                 x:Name="ProductsCollection"
