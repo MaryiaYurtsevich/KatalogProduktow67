@@ -5,10 +5,19 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="30,20" Spacing="15" Background="LightPink">
-            <SearchBar x:Name="nameSearchBar" Placeholder="Wpisz nazwę produktu" TextChanged="nameSearchBar_TextChanged"/>
+            <SearchBar x:Name="nameSearchBar" 
+                       WidthRequest="400" 
+                       Placeholder="Wpisz nazwę produktu" 
+                       TextChanged="nameSearchBar_TextChanged"/>
 
+            <Button
+                Text="Szukaj"
+                Clicked="OnSearchButtonClicked" 
+                BackgroundColor="HotPink"
+                WidthRequest="400"/>
             <Label
                 Text="Katalog produktów"
+                FontFamily="Bold"
                 FontSize="24"
                 HorizontalOptions="Center"
                 TextColor="HotPink"
@@ -46,12 +55,7 @@
                 BackgroundColor="HotPink"
                 WidthRequest="400"/>
 
-            <Button
-                Text="Szukaj"
-                Clicked="OnSearchButtonClicked" 
-                BackgroundColor="HotPink"
-                WidthRequest="400"/>
-
+            <Label x:Name="iloscLabel" Text="Ilość produktów: 0" />
             <CollectionView
                 x:Name="ProductsCollection"
                 SelectionMode="Single">
