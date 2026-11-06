@@ -6,7 +6,9 @@ namespace KatalogProduktow
 {
         public class Usluga : Produkt
         {
-            public override double WartoscMagazynu => 0;
+        public override string Status => "usługa";
+        public override double WartoscMagazynu => 0;
+
 
             public override string Opis()
             {
