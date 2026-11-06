@@ -5,7 +5,9 @@ using System.Collections.ObjectModel;
 
 public partial class MainPage : ContentPage
 {
-
+    // Stos stron przechowuje strony ktore otwieramy w aplikacji
+    // PushAsync otwiera nową strone i dodaje ja na stos
+    // PopAsync zamyka obecna strone i wraca do poprzedniej
     public ObservableCollection<Produkt> widoczneProdukty { get; set; } = new ObservableCollection<Produkt>();
     public ObservableCollection<Produkt> Produkty { get; set; }
     public MainPage()
@@ -17,8 +19,23 @@ public partial class MainPage : ContentPage
         new Produkt { Name = "Kawa", Price = 17.50, Category = "Napoje", Quantity = 3 },
         new Produkt { Name = "Herbata", Price = 67.00, Category = "Napoje", Quantity = 8 },
         new Produkt { Name = "Krewetka", Price = 85.00, Category = "Jedzenie", Quantity = 2 },
-        new Produkt { Name = "Kasza", Price = 100.00, Category = "Jedzenie", Quantity = 40 }
+        new Produkt { Name = "Kasza", Price = 100.00, Category = "Jedzenie", Quantity = 40 },
 
+
+        new Podzespol
+        {
+            Name = "Procesor",
+            Price = 250.00,
+            Category = "Elektronika",
+            Quantity = 10,
+        },
+        new Usluga
+        {
+            Name = "Naprawa komputera",
+            Price = 150.00,
+            Category = "Usługi",
+            Quantity = 0,
+        }
     };
         InitializeComponent();
         Odswiez();
@@ -80,6 +97,18 @@ public partial class MainPage : ContentPage
     private void nameSearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
         Odswiez();
+    }
+    private async void Szczegoly_Clicked(object sender, EventArgs e)
+    {
+        if (ProductsCollection.SelectedItem is Produkt wybrany)
+        {
+            // połóż nową stronę na stos i przekaż jej zaznaczony produkt
+            await Navigation.PushAsync(new SzczegolyPage(wybrany));
+        }
+        else
+        {
+            await DisplayAlertAsync("Brak wyboru", "Najpierw zaznacz produkt na liście.", "OK");
+        }
     }
 
 }

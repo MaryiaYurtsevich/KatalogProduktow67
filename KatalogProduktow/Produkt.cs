@@ -74,5 +74,6 @@ namespace KatalogProduktow
             //zwracamy listę znalezionych produktów
             return znalezioneProdukty;
         }
+
     }
 }

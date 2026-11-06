@@ -57,6 +57,8 @@
                 Clicked="UsunProdukt_Clicked" 
                 BackgroundColor="HotPink"
                 WidthRequest="400"/>
+            
+            <Button Text="Szczegóły" Clicked="Szczegoly_Clicked" />
 
             <Label x:Name="iloscLabel" Text="Ilość produktów: 0" />
             <CollectionView

@@ -74,4 +74,10 @@
 	  <ProjectReference Include="..\..\KatalogProduktow\KatalogProduktow.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="SzczegolyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
