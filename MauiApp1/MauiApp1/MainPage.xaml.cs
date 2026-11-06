@@ -98,16 +98,34 @@ public partial class MainPage : ContentPage
     {
         Odswiez();
     }
-    private async void Szczegoly_Clicked(object sender, EventArgs e)
+
+    //roznica miedzy PushAsync a GoToAsync jest taka, ze PushAsync jest uzywane w tradycyjnej nawigacji stron, podczas gdy GoToAsync jest uzywane w nawigacji opartej na Shell. GoToAsync pozwala na przechodzenie do stron zdefiniowanych w Shell i przekazywanie parametrów w bardziej elastyczny sposob.
+
+    //private async void Szczegoly_Clicked(object sender, EventArgs e)
+    //{
+    //    if (ProductsCollection.SelectedItem is Produkt wybrany)
+    //    {
+    //        // połóż nową stronę na stos i przekaż jej zaznaczony produkt
+    //        await Navigation.PushAsync(new SzczegolyPage(wybrany));
+    //    }
+    //    else
+    //    {
+    //        await DisplayAlertAsync("Brak wyboru", "Najpierw zaznacz produkt na liście.", "OK");
+    //    }
+
+    //}
+
+    private async void SzczegolyShell_Clicked(object sender, EventArgs e)
     {
         if (ProductsCollection.SelectedItem is Produkt wybrany)
         {
-            // połóż nową stronę na stos i przekaż jej zaznaczony produkt
-            await Navigation.PushAsync(new SzczegolyPage(wybrany));
-        }
-        else
-        {
-            await DisplayAlertAsync("Brak wyboru", "Najpierw zaznacz produkt na liście.", "OK");
+            // Przechodzimy do strony szczegółów i przekazujemy produkt
+            await Shell.Current.GoToAsync(
+                nameof(SzczegolyPage),
+                new Dictionary<string, object>
+                {
+                    ["Produkt"] = wybrany
+                });
         }
     }
 

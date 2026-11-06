@@ -5,6 +5,9 @@
         public AppShell()
         {
             InitializeComponent();
+            // nazwa trasy = nazwa klasy strony
+            Routing.RegisterRoute(nameof(SzczegolyPage), typeof(SzczegolyPage));
         }
+
     }
 }
