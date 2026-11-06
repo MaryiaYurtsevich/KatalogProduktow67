@@ -8,16 +8,17 @@
             <SearchBar x:Name="nameSearchBar" 
                        WidthRequest="400" 
                        Placeholder="Wpisz nazwę produktu" 
-                       TextChanged="nameSearchBar_TextChanged"/>
+                       TextChanged="nameSearchBar_TextChanged"
+                       PlaceholderColor="HotPink"/>
 
-            <Button
+           <!-- <Button
                 Text="Szukaj"
                 Clicked="OnSearchButtonClicked" 
                 BackgroundColor="HotPink"
-                WidthRequest="400"/>
+                WidthRequest="400"/> -->
             <Label
                 Text="Katalog produktów"
-                FontFamily="Bold"
+                FontAttributes="Bold"
                 FontSize="24"
                 HorizontalOptions="Center"
                 TextColor="HotPink"
@@ -25,11 +26,13 @@
             <Entry
                 x:Name="nazwaEntry"
                 Placeholder="Nazwa produktu"
+                PlaceholderColor="HotPink"
                 WidthRequest="500"/>
 
             <Entry
                 x:Name="cenaEntry"
                 Placeholder="Cena produktu"
+                PlaceholderColor="HotPink"
                 Keyboard="Numeric" 
                 WidthRequest="500"/>
 
