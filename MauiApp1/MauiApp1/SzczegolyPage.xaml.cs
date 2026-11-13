@@ -5,7 +5,8 @@ namespace MauiApp1;
 public partial class SzczegolyPage : ContentPage, IQueryAttributable
 {
     // konstruktor dla Shell - dane przyjdą później, w ApplyQueryAttributes
-        private Produkt? produkt;
+    private Produkt? produkt;
+    private List<Produkt> baza;
     public SzczegolyPage()
     {
         InitializeComponent();
@@ -52,6 +53,19 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
         produkt.Name = NazwaEntry.Text;
         produkt.Price = cena;
         produkt.Quantity = ilosc;
+        await Shell.Current.GoToAsync("..");
+    }
+    private async void Usun_Clicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlertAsync("Potwierdzenie", "Czy na pewno chcesz usunąć produkt?", "Tak", "Nie");
+        if (!answer)
+        {
+            return;
+        }
+        if (produkt is not null && baza is not null)
+        {
+            baza.Remove(produkt);
+        }
         await Shell.Current.GoToAsync("..");
     }
 }

@@ -12,5 +12,6 @@
         <Entry x:Name="IloscEntry" />
         <Button Text="Powrót" Clicked="Wroc_Clicked" />
         <Button Text="Zapisz" Clicked="Zapisz_Clicked" />
+        <Button Text="Usuń" Clicked="Usun_Clicked" />
     </VerticalStackLayout>
 </ContentPage>
