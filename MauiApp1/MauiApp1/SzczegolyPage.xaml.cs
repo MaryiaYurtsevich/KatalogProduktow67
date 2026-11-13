@@ -5,25 +5,53 @@ namespace MauiApp1;
 public partial class SzczegolyPage : ContentPage, IQueryAttributable
 {
     // konstruktor dla Shell - dane przyjdą później, w ApplyQueryAttributes
+        private Produkt? produkt;
     public SzczegolyPage()
     {
         InitializeComponent();
+
     }
 
     // Shell wywołuje tę metodę i podaje słownik przekazany w GoToAsync
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        if (query["Produkt"] is Produkt produkt)
-        {
-            BindingContext = produkt;
-            opisLabel.Text = produkt.Opis();
-        }
+
+        if (query["Produkt"] is not Produkt produkt)
+            return;
+        this.produkt = produkt;
+        BindingContext = produkt;
+        NazwaEntry.Text = produkt.Name;
+        CenaEntry.Text = produkt.Price.ToString();
+        IloscEntry.Text = produkt.Quantity.ToString();
+        //KategoriaPicker.SelectedItem = produkt.Kategoria;
     }
     // ... konstruktor z parametrem i Wroc_Clicked bez zmian
     private async void Wroc_Clicked(object sender, EventArgs e)
     {
         // zdejmij tę stronę ze stosu - wracamy do poprzedniej
-        await Navigation.PopAsync();
+        await Shell.Current.GoToAsync("..");
     }
+    private async void Zapisz_Clicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(NazwaEntry.Text))
+        {
+            await DisplayAlertAsync("Błąd", "Nazwa produktu nie może być pusta.", "OK");
+            return;
+        }
+        if (!double.TryParse(CenaEntry.Text, out double cena) || cena < 0)
+        {
+            await DisplayAlertAsync("Błąd", "Cena produktu musi być liczbą nieujemną.", "OK");
+            return;
+        }
+        if (!int.TryParse(IloscEntry.Text, out int ilosc) || ilosc < 0)
+        {
+            await DisplayAlertAsync("Błąd", "Ilość produktu musi być liczbą nieujemną.", "OK");
+            return;
+        }
 
+        produkt.Name = NazwaEntry.Text;
+        produkt.Price = cena;
+        produkt.Quantity = ilosc;
+        await Shell.Current.GoToAsync("..");
+    }
 }

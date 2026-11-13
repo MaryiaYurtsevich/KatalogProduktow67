@@ -4,14 +4,13 @@
              x:Class="MauiApp1.SzczegolyPage"
              Title="SzczegolyPage">
     <VerticalStackLayout Padding="30" Spacing="15">
-        <!-- każda etykieta czyta jedną właściwość obiektu z BindingContext -->
-        <Label Text="{Binding Nazwa}" FontSize="24" FontAttributes="Bold" />
-        <Label Text="{Binding Kategoria, StringFormat='Kategoria: {0}'}" />
-        <Label Text="{Binding Cena, StringFormat='Cena: {0:C}'}" />
-        <Label Text="{Binding Ilosc, StringFormat='W magazynie: {0} szt.'}" />
-        <Label Text="{Binding WartoscMagazynu, StringFormat='Wartość magazynu: {0:C}'}" />
-        <!-- Opis() to metoda, a nie właściwość, więc ustawiamy ją w kodzie -->
-        <Label x:Name="opisLabel" />
-        <Button Text="Wróć do listy" Clicked="Wroc_Clicked" />
+        <Label Text="Nazwa:" />
+        <Entry x:Name="NazwaEntry" />
+        <Label Text="Cena:" />
+        <Entry x:Name="CenaEntry" />
+        <Label Text="Ilość:" />
+        <Entry x:Name="IloscEntry" />
+        <Button Text="Powrót" Clicked="Wroc_Clicked" />
+        <Button Text="Zapisz" Clicked="Zapisz_Clicked" />
     </VerticalStackLayout>
 </ContentPage>

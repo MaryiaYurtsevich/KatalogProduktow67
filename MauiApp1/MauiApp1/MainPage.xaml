@@ -58,8 +58,12 @@
                 BackgroundColor="HotPink"
                 WidthRequest="400"/>
             
-            <Button Text="Szczegóły" Clicked="Szczegoly_Clicked" />
-
+            <Button 
+                Text="Szczegóły"
+                Clicked="Szczegoly_Clicked" 
+                WidthRequest="400"
+                BackgroundColor="HotPink"/>
+                    
             <Label x:Name="iloscLabel" Text="Ilość produktów: 0" />
             <CollectionView
     x:Name="ProductsCollection"

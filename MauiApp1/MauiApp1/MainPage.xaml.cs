@@ -115,7 +115,7 @@ public partial class MainPage : ContentPage
 
     //}
 
-    private async void SzczegolyShell_Clicked(object sender, EventArgs e)
+    private async void Szczegoly_Clicked(object sender, EventArgs e)
     {
         if (ProductsCollection.SelectedItem is Produkt wybrany)
         {
