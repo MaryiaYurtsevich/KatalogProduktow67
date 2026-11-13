@@ -8,11 +8,12 @@ public partial class MainPage : ContentPage
     // Stos stron przechowuje strony ktore otwieramy w aplikacji
     // PushAsync otwiera nową strone i dodaje ja na stos
     // PopAsync zamyka obecna strone i wraca do poprzedniej
+    private readonly List<Produkt> bazaProduktow = new();
     public ObservableCollection<Produkt> widoczneProdukty { get; set; } = new ObservableCollection<Produkt>();
     public ObservableCollection<Produkt> Produkty { get; set; }
     public MainPage()
     {
-        Produkty = new ObservableCollection<Produkt>
+        bazaProduktow = new List<Produkt>
 
         {
         new Produkt { Name = "Panini", Price = 15.00, Category = "Jedzenie", Quantity = 5 },
@@ -45,7 +46,7 @@ public partial class MainPage : ContentPage
     {
         widoczneProdukty.Clear();
         string kryteria = nameSearchBar.Text ?? string.Empty;
-        List<Produkt> znalezioneProdukty = Produkt.Szukaj(Produkty.ToList(), kryteria);
+        List<Produkt> znalezioneProdukty = Produkt.Szukaj(bazaProduktow, kryteria);
         foreach (var produkt in znalezioneProdukty)
         {
             widoczneProdukty.Add(produkt);
@@ -75,6 +76,7 @@ public partial class MainPage : ContentPage
             Quantity = 0 // domyślna ilość
         };
         Produkty.Add(nowyProdukt);
+        bazaProduktow.Add(nowyProdukt);
         Odswiez();
     }
 
@@ -83,11 +85,11 @@ public partial class MainPage : ContentPage
     {
         if (ProductsCollection.SelectedItem is Produkt wybranyProdukt)
         {
-            Produkty.Remove(wybranyProdukt);
-            ProductsCollection.SelectedItem = null;
+            bazaProduktow.Remove(wybranyProdukt);
+        }
             Odswiez();
         }
-    }
+    
 
 
     private void OnSearchButtonClicked(object sender, EventArgs e)
@@ -117,15 +119,16 @@ public partial class MainPage : ContentPage
 
     private async void Szczegoly_Clicked(object sender, EventArgs e)
     {
-        if (ProductsCollection.SelectedItem is Produkt wybrany)
-        {
-            // Przechodzimy do strony szczegółów i przekazujemy produkt
-            await Shell.Current.GoToAsync(
-                nameof(SzczegolyPage),
-                new Dictionary<string, object>
+        if (ProductsCollection.SelectedItem is Produkt wybranyProdukt)
+        {// Przekazanie wybranego produktu do strony szczegółów
+         // przygotowanie paczki z danymi do przekazania
+            var dane = new Dictionary<string, object>
                 {
-                    ["Produkt"] = wybrany
-                });
+                    { "Produkt", wybranyProdukt },
+                    { "BazaProduktow", bazaProduktow }
+                };
+            //wywołanie nawigacji do strony szczegółów z przekazaniem danych
+            await Shell.Current.GoToAsync(nameof(SzczegolyPage), dane);
         }
     }
 

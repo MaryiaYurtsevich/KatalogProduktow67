@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO.IsolatedStorage;
 using System.Text;
 
 namespace KatalogProduktow
 {
-    public class Produkt
+    public class Produkt : IWyceniany, IComparable<Produkt>
     {
         public string? Name { get; set; }
         public double Price { get; set; }

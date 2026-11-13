@@ -16,9 +16,12 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
     // Shell wywołuje tę metodę i podaje słownik przekazany w GoToAsync
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-
         if (query["Produkt"] is not Produkt produkt)
             return;
+        this.produkt = produkt;
+        if (query["BazaProduktow"] is not List<Produkt> baza)
+            return;
+        this.baza = baza;
         this.produkt = produkt;
         BindingContext = produkt;
         NazwaEntry.Text = produkt.Name;
