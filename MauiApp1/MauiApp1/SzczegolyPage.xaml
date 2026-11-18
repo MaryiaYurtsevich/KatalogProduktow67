@@ -10,6 +10,18 @@
         <Entry x:Name="CenaEntry" />
         <Label Text="Ilość:" />
         <Entry x:Name="IloscEntry" />
+        
+        <Label Text="Kategoria" />
+
+        <Picker 
+            x:Name="KategoriaPicker"
+            Title="Wybierz kategorię">
+            <Picker.Items>
+                <x:String>Podzespół</x:String>
+                <x:String>Akcesorium</x:String>
+                <x:String>Usługa</x:String>
+            </Picker.Items>
+        </Picker>
         <Button Text="Powrót" Clicked="Wroc_Clicked" />
         <Button Text="Zapisz" Clicked="Zapisz_Clicked" />
         <Button Text="Usuń" Clicked="Usun_Clicked" />

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace KatalogProduktow
 {
-    public class IWyceniany
+    public interface IWyceniany
     {
-        public string Name { get; }
-        public double Price { get; }
+        string Name { get; }
+        double Price { get; }
     }
 }

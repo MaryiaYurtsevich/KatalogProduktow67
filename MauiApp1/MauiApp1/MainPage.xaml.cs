@@ -75,7 +75,6 @@ public partial class MainPage : ContentPage
             Category = kategoria,
             Quantity = 0 // domyślna ilość
         };
-        Produkty.Add(nowyProdukt);
         bazaProduktow.Add(nowyProdukt);
         Odswiez();
     }
@@ -130,6 +129,11 @@ public partial class MainPage : ContentPage
             //wywołanie nawigacji do strony szczegółów z przekazaniem danych
             await Shell.Current.GoToAsync(nameof(SzczegolyPage), dane);
         }
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        Odswiez();
     }
 
 }
