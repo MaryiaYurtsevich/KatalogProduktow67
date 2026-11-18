@@ -6,12 +6,54 @@ using System.Text;
 
 namespace KatalogProduktow
 {
-    public class Produkt : IWyceniany, IComparable<Produkt>
+    public class Produkt : IWyceniany, IComparable<Produkt>, INotifyPropertyChanged
     {
-        public string? Name { get; set; }
-        public double Price { get; set; }
-        public string? Category { get; set; }
-        public int Quantity { get; set; }
+        private string? name;
+        public string? Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                Zmiana(nameof(Name));
+            }
+        }
+
+        private double price;
+        public double Price
+        {
+            get => price;
+            set
+            {
+                price = value;
+                Zmiana(nameof(Price));
+                Zmiana(nameof(WartoscMagazynu));
+            }
+        }
+
+        private string? category;
+        public string? Category
+        {
+            get => category;
+            set
+            {
+                category = value;
+                Zmiana(nameof(Category));
+            }
+        }
+
+        private int quantity;
+        public virtual int Quantity
+        {
+            get => quantity;
+            set
+            {
+                quantity = value;
+                Zmiana(nameof(Quantity));
+                Zmiana(nameof(Status));
+                Zmiana(nameof(WartoscMagazynu));
+            }
+        }
 
         public virtual string Status =>
             Quantity == 0 ? "brak" :
@@ -19,6 +61,12 @@ namespace KatalogProduktow
             "dostępny";
 
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void Zmiana(string nazwaWlasciwosci)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nazwaWlasciwosci));
+        }
         public virtual double WartoscMagazynu
         {
             get { return Price * Quantity; }

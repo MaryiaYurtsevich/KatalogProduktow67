@@ -6,10 +6,10 @@ namespace KatalogProduktow
 {
     public class PozycjaZamowienia
     {
-        public Produkt Produkt { get; set; }
+        public IWyceniany Produkt { get; set; }
         public int Quantity { get; set; }
 
-        public PozycjaZamowienia(Produkt produkt, int ilosc)
+        public PozycjaZamowienia(IWyceniany produkt, int ilosc)
         {
             Produkt = produkt;
             Quantity = ilosc;

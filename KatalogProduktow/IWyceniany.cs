@@ -7,6 +7,6 @@ namespace KatalogProduktow
     public class IWyceniany
     {
         public string Name { get; }
-        double Price { get; }
+        public double Price { get; }
     }
 }
