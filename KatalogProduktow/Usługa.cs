@@ -14,10 +14,10 @@ namespace KatalogProduktow
 
             public override string Opis()
             {
-                return $"{Name} (usługa), Cena: {Price:F2}";
+                return $"{Nazwa} (usługa), Cena: {Cena:F2}";
             }
 
-        public override int Quantity
+        public override int Ilosc
         {
             get => 0;
             set { }

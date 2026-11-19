@@ -9,11 +9,11 @@ namespace KatalogProduktow
             public string Producent { get; set; } 
             public override string ToString()
             {
-                return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}, Producent: {Producent}";
+                return $"Nazwa: {Nazwa}, Cena: {Cena}, Kategoria: {Kategoria}, Ilość: {Ilosc}, Wartość magazynu: {WartoscMagazynu}, Producent: {Producent}";
             }
             public override string Opis()
             { 
-                return $"Producent: {Producent}, Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " + $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+                return $"Producent: {Producent}, Nazwa: {Nazwa}, Cena: {Cena}, Kategoria: {Kategoria}, " + $"Ilość: {Ilosc}, Wartość magazynu: {WartoscMagazynu}";
             }
         }
 }

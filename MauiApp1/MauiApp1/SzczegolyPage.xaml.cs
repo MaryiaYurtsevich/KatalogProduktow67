@@ -24,11 +24,11 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
         this.baza = baza;
         this.produkt = produkt;
         BindingContext = produkt;
-        NazwaEntry.Text = produkt.Name;
-        CenaEntry.Text = produkt.Price.ToString();
-        IloscEntry.Text = produkt.Quantity.ToString();
-        KategoriaPicker.SelectedItem = produkt.Category;
-        produkt.Category = KategoriaPicker.SelectedItem?.ToString();
+        NazwaEntry.Text = produkt.Nazwa;
+        CenaEntry.Text = produkt.Cena.ToString();
+        IloscEntry.Text = produkt.Ilosc.ToString();
+        KategoriaPicker.SelectedItem = produkt.Kategoria;
+        produkt.Kategoria = KategoriaPicker.SelectedItem?.ToString();
         //KategoriaPicker.SelectedItem = produkt.Kategoria;
     }
 
@@ -56,9 +56,9 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
             return;
         }
 
-        produkt.Name = NazwaEntry.Text;
-        produkt.Price = cena;
-        produkt.Quantity = ilosc;
+        produkt.Nazwa = NazwaEntry.Text;
+        produkt.Cena = cena;
+        produkt.Ilosc = ilosc;
         await Shell.Current.GoToAsync("..");
     }
     private async void Usun_Clicked(object sender, EventArgs e)

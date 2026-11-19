@@ -8,56 +8,56 @@ namespace KatalogProduktow
 {
     public class Produkt : IWyceniany, IComparable<Produkt>, INotifyPropertyChanged
     {
-        private string? name;
-        public string? Name
+        private string? nazwa;
+        public string? Nazwa
         {
-            get => name;
+            get => nazwa;
             set
             {
-                name = value;
-                Zmiana(nameof(Name));
+                nazwa = value;
+                Zmiana(nameof(Nazwa));
             }
         }
 
-        private double price;
-        public double Price
+        private double cena;
+        public double Cena
         {
-            get => price;
+            get => cena;
             set
             {
-                price = value;
-                Zmiana(nameof(Price));
+                cena = value;
+                Zmiana(nameof(Cena));
                 Zmiana(nameof(WartoscMagazynu));
             }
         }
 
-        private string? category;
-        public string? Category
+        private string? kategoria;
+        public string? Kategoria
         {
-            get => category;
+            get => kategoria;
             set
             {
-                category = value;
-                Zmiana(nameof(Category));
+                kategoria = value;
+                Zmiana(nameof(Kategoria));
             }
         }
 
-        private int quantity;
-        public virtual int Quantity
+        private int ilosc;
+        public virtual int Ilosc
         {
-            get => quantity;
+            get => ilosc;
             set
             {
-                quantity = value;
-                Zmiana(nameof(Quantity));
+                ilosc = value;
+                Zmiana(nameof(Ilosc));
                 Zmiana(nameof(Status));
                 Zmiana(nameof(WartoscMagazynu));
             }
         }
 
         public virtual string Status =>
-            Quantity == 0 ? "brak" :
-            Quantity < 5 ? "ostatnie sztuki" :
+            Ilosc == 0 ? "brak" :
+            Ilosc < 5 ? "ostatnie sztuki" :
             "dostępny";
 
 
@@ -69,13 +69,13 @@ namespace KatalogProduktow
         }
         public virtual double WartoscMagazynu
         {
-            get { return Price * Quantity; }
+            get { return Cena * Ilosc; }
         }
         //funkcja sprawdza czy poprawnie obliczamy wartośc magazynu
         public static void SprawdzWartosc(Produkt p)
         {
 
-            if (p.WartoscMagazynu == p.Price * p.Quantity)
+            if (p.WartoscMagazynu == p.Cena * p.Ilosc)
             {
                 Console.WriteLine("Wartość magazynu jest poprawna.");
             }
@@ -89,30 +89,30 @@ namespace KatalogProduktow
         {
             foreach (var produkt in produkty)
             {
-                if (produkt.Price < 0)
+                if (produkt.Cena < 0)
                 {
-                    Console.WriteLine($"Produkt {produkt.Name} ma niepoprawną cenę: {produkt.Price}");
+                    Console.WriteLine($"Produkt {produkt.Nazwa} ma niepoprawną cenę: {produkt.Cena}");
                 }
             }
         }
 
         public override string ToString()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +
-                $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+            return $"Nazwa: {Nazwa}, Cena: {Cena}, Kategoria: {Kategoria}, " +
+                $"Ilość: {Ilosc}, Wartość magazynu: {WartoscMagazynu}";
         }
         //funkcja zwraca opis produktu
         public virtual string Opis()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kategoria: {Category}, " +
-                $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+            return $"Nazwa: {Nazwa}, Cena: {Cena}, Kategoria: {Kategoria}, " +
+                $"Ilość: {Ilosc}, Wartość magazynu: {WartoscMagazynu}";
         }
         public int CompareTo(Produkt? other)
         {
             //jeśli drugi obiekt jest null, to ten obiekt jest większy (bo 1 > 0)
             if (other == null) return 1;
             //w innym wypadku zwracamy wynik porównania cen produktów
-            return this.Price.CompareTo(other.Price);
+            return this.Cena.CompareTo(other.Cena);
         }
         public static List<Produkt> Szukaj(List<Produkt> produkty, string nazwa)
         {
@@ -120,14 +120,14 @@ namespace KatalogProduktow
             //można pętlą foreach przeszukać listę produktów i dodać do znalezioneProdukty te, które zawierają w nazwie szukany ciąg znaków
             foreach (var produkt in produkty)
             {
-                if (produkt.Name.Contains(nazwa, StringComparison.OrdinalIgnoreCase))
+                if (produkt.Nazwa.Contains(nazwa, StringComparison.OrdinalIgnoreCase))
                 {
                     znalezioneProdukty.Add(produkt);
                 }
             }
             //alternatywnie można użyć LINQ do wyszukiwania produktów:
             znalezioneProdukty.Clear(); //czyścimy listę, żeby nie dublować wyników
-            znalezioneProdukty = produkty.Where(p => p.Name.Contains(nazwa, StringComparison.OrdinalIgnoreCase)).ToList();
+            znalezioneProdukty = produkty.Where(p => p.Nazwa.Contains(nazwa, StringComparison.OrdinalIgnoreCase)).ToList();
             //zwracamy listę znalezionych produktów
             return znalezioneProdukty;
         }

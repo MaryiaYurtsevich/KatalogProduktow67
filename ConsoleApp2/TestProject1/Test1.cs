@@ -13,10 +13,10 @@ namespace TestProject1
             {
                 Produkt p = new Produkt
                 {
-                    Name = $"Produkt{i}",
-                    Price = r.NextDouble() * 100,
-                    Category = $"Kategoria{r.Next(1, 5)}",
-                    Quantity = r.Next(1, 20)
+                    Nazwa = $"Produkt{i}",
+                    Cena = r.NextDouble() * 100,
+                    Kategoria = $"Kategoria{r.Next(1, 5)}",
+                    Ilosc = r.Next(1, 20)
                 };
                 produkty.Add(p);
             }
@@ -27,10 +27,10 @@ namespace TestProject1
             Random r = new Random();
             Produkt p = new Produkt
             {
-                Name = $"ProduktTestowy",
-                Price = r.NextDouble() * 100,
-                Category = $"Kategoria{r.Next(1, 5)}",
-                Quantity = r.Next(1, 20)
+                Nazwa = $"ProduktTestowy",
+                Cena = r.NextDouble() * 100,
+                Kategoria = $"Kategoria{r.Next(1, 5)}",
+                Ilosc = r.Next(1, 20)
             };
             return p;
         }
@@ -39,7 +39,7 @@ namespace TestProject1
         {
             // Arrange
             var produkt = PrzygotujProdukt();
-            double sprawdzonaWartosc = produkt.Price * produkt.Quantity;
+            double sprawdzonaWartosc = produkt.Cena * produkt.Ilosc;
             // Act
             double wartoscMagazynu = produkt.WartoscMagazynu;
             // Assert
@@ -51,9 +51,9 @@ namespace TestProject1
             // Arrange
             var produkt = PrzygotujProdukt();
             // Ustawiamy cenę na wartość ujemną
-            produkt.Price *= -1;
+            produkt.Cena *= -1;
             // Act
-            bool isCenaDodatnia = produkt.Price >= 0;
+            bool isCenaDodatnia = produkt.Cena >= 0;
             // Assert
             Assert.IsFalse(isCenaDodatnia, "Cena produktu powinna być nieujemna.");
         }
@@ -76,7 +76,7 @@ namespace TestProject1
             int licznik = 0;
             foreach (var produkt in produkty)
             {
-                if (produkt.Price > 0)
+                if (produkt.Cena > 0)
                 {
                     licznik++; // za każdy produkt z ceną większą od 0 zwiększamy licznik
                 }
@@ -92,10 +92,10 @@ namespace TestProject1
             string nazwaProducenta = "Producent1";
             var podzespol = new Podzespol
             {
-                Name = "Podzespol1",
-                Price = 25.0,
-                Category = "Kategoria2",
-                Quantity = 2,
+                Nazwa = "Podzespol1",
+                Cena = 25.0,
+                Kategoria = "Kategoria2",
+                Ilosc = 2,
                 Producent = nazwaProducenta
             };
             //act - sciagam opis do zmiennej
@@ -109,7 +109,7 @@ namespace TestProject1
         public void WartoscMagazynuDlaUslugi()
         {
             //arrange - przygotowujemy obiekt usługi
-            var usluga = new Usluga { Name = "Usluga1", Price = 20.0, Category = "Kategoria3", Quantity = 0 };
+            var usluga = new Usluga { Nazwa = "Usluga1", Cena = 20.0, Kategoria = "Kategoria3", Ilosc = 0 };
             //act - sciagam wartosc magazynu do zmiennej
             var wartoscMagazynu = usluga.WartoscMagazynu;
             //assert - sprawdzam czy wartosc magazynu jest równa 0
@@ -123,10 +123,10 @@ namespace TestProject1
             string kolor = "Czerwony";
             var akcesorium = new Akcesorium
             {
-                Name = "Akcesorium1",
-                Price = 15.0,
-                Category = "Kategoria2",
-                Quantity = 3,
+                Nazwa = "Akcesorium1",
+                Cena = 15.0,
+                Kategoria = "Kategoria2",
+                Ilosc = 3,
                 Kolor = kolor
             };
             //act - sciagam opis do zmiennej
@@ -158,7 +158,7 @@ namespace TestProject1
             // Assert
             foreach (var produkt in znalezioneProdukty)
             {
-                StringAssert.Contains(produkt.Name, szukanaNazwa, $"Znaleziony produkt {produkt.Name} powinien zawierać '{szukanaNazwa}' w nazwie.");
+                StringAssert.Contains(produkt.Nazwa, szukanaNazwa, $"Znaleziony produkt {produkt.Nazwa} powinien zawierać '{szukanaNazwa}' w nazwie.");
             }
         }
         //sprawdz ile produktów o określonej nazwie jest w liście i porównaj z wynikiem wyszukiwania
@@ -177,7 +177,7 @@ namespace TestProject1
         [TestMethod]
         public void Status_Brak()
         {
-            Produkt p = new Produkt { Quantity = 0 };
+            Produkt p = new Produkt { Ilosc = 0 };
 
             Assert.AreEqual("brak", p.Status);
 
@@ -185,21 +185,21 @@ namespace TestProject1
         [TestMethod]
         public void Status_OstatnieSztuki()
         {
-            Produkt p = new Produkt { Quantity = 3 };
+            Produkt p = new Produkt { Ilosc = 3 };
 
             Assert.AreEqual("ostatnie sztuki", p.Status);
         }
         [TestMethod]
         public void Status_Dostepny()
         {
-            Produkt p = new Produkt { Quantity = 10 };
+            Produkt p = new Produkt { Ilosc = 10 };
 
             Assert.AreEqual("dostępny", p.Status);
         }
         [TestMethod]
         public void Status_Usluga()
         {
-            Usluga u = new Usluga { Quantity = 0 };
+            Usluga u = new Usluga { Ilosc = 0 };
             Assert.AreEqual("usługa", u.Status);
         }
     }

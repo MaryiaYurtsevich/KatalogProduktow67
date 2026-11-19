@@ -16,26 +16,26 @@ public partial class MainPage : ContentPage
         bazaProduktow = new List<Produkt>
 
         {
-        new Produkt { Name = "Panini", Price = 15.00, Category = "Jedzenie", Quantity = 5 },
-        new Produkt { Name = "Kawa", Price = 17.50, Category = "Napoje", Quantity = 3 },
-        new Produkt { Name = "Herbata", Price = 67.00, Category = "Napoje", Quantity = 8 },
-        new Produkt { Name = "Krewetka", Price = 85.00, Category = "Jedzenie", Quantity = 2 },
-        new Produkt { Name = "Kasza", Price = 100.00, Category = "Jedzenie", Quantity = 40 },
+        new Produkt { Nazwa = "Panini", Cena = 15.00, Kategoria = "Jedzenie", Ilosc = 5 },
+        new Produkt { Nazwa = "Kawa", Cena = 17.50, Kategoria = "Napoje", Ilosc = 3 },
+        new Produkt { Nazwa = "Herbata", Cena = 67.00, Kategoria = "Napoje", Ilosc = 8 },
+        new Produkt { Nazwa = "Krewetka", Cena = 85.00, Kategoria = "Jedzenie", Ilosc = 2 },
+        new Produkt { Nazwa = "Kasza", Cena = 100.00, Kategoria = "Jedzenie", Ilosc = 40 },
 
 
         new Podzespol
         {
-            Name = "Procesor",
-            Price = 250.00,
-            Category = "Elektronika",
-            Quantity = 10,
+            Nazwa = "Procesor",
+            Cena = 250.00,
+            Kategoria = "Elektronika",
+            Ilosc = 10,
         },
         new Usluga
         {
-            Name = "Naprawa komputera",
-            Price = 150.00,
-            Category = "Usługi",
-            Quantity = 0,
+            Nazwa = "Naprawa komputera",
+            Cena = 150.00,
+            Kategoria = "Usługi",
+            Ilosc = 0,
         }
     };
         InitializeComponent();
@@ -70,10 +70,10 @@ public partial class MainPage : ContentPage
         //tworzymy nową instancję produktu
         Produkt nowyProdukt = new Produkt
         {
-            Name = nazwa,
-            Price = cena,
-            Category = kategoria,
-            Quantity = 0 // domyślna ilość
+            Nazwa = nazwa,
+            Cena = cena,
+            Kategoria = kategoria,
+            Ilosc = 0 // domyślna ilość
         };
         bazaProduktow.Add(nowyProdukt);
         Odswiez();

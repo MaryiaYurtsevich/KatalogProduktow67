@@ -6,7 +6,7 @@ namespace KatalogProduktow
 {
     public interface IWyceniany
     {
-        string Name { get; }
-        double Price { get; }
+        string Nazwa { get; }
+        double Cena { get; }
     }
 }

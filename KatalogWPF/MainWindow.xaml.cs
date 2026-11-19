@@ -22,11 +22,13 @@ namespace KatalogWPF
             InitializeComponent();
             var produkty = new List<Produkt>
             {
-                new Podzespol { Name = "Procesor", Price = 250.00, Category = "Elektronika", Quantity = 10 },
-                new Akcesorium { Name = "Myszka", Price = 50.00, Category = "Elektronika", Quantity = 15 },
-                new Usluga { Name = "Naprawa komputera", Price = 150.00, Category = "Usługi", Quantity = 0 },
+                new Podzespol { Nazwa = "Procesor", Cena = 250.00, Kategoria = "Elektronika", Ilosc = 10 },
+                new Akcesorium { Nazwa = "Myszka", Cena = 50.00, Kategoria = "Elektronika", Ilosc = 15 },
+                new Usluga { Nazwa = "Naprawa komputera", Cena = 150.00, Kategoria = "Usługi", Ilosc = 0 },
             };
             ProduktyListBox.ItemsSource = produkty;
+            LiczbaProduktowTextBlock.Text = produkty.Count.ToString();
+            WartoscProduktowTextBlock.Text = produkty.Sum(p => p.Cena * p.Ilosc).ToString("F2") + "zł";
         }
     }
 }

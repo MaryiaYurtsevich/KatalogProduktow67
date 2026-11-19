@@ -12,8 +12,8 @@ namespace KatalogProduktow
 
         public override string Opis()
         {
-            return $"Nazwa: {Name}, Cena: {Price}, Kolor: {Kolor}, Kategoria: {Category}, " +
-                 $"Ilość: {Quantity}, Wartość magazynu: {WartoscMagazynu}";
+            return $"Nazwa: {Nazwa}, Cena: {Cena}, Kolor: {Kolor}, Kategoria: {Kategoria}, " +
+                 $"Ilość: {Ilosc}, Wartość magazynu: {WartoscMagazynu}";
         }
     }
 }
