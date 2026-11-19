@@ -28,6 +28,7 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
         CenaEntry.Text = produkt.Price.ToString();
         IloscEntry.Text = produkt.Quantity.ToString();
         KategoriaPicker.SelectedItem = produkt.Category;
+        produkt.Category = KategoriaPicker.SelectedItem?.ToString();
         //KategoriaPicker.SelectedItem = produkt.Kategoria;
     }
 
