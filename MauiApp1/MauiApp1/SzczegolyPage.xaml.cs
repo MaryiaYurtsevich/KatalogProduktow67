@@ -27,9 +27,9 @@ public partial class SzczegolyPage : ContentPage, IQueryAttributable
         NazwaEntry.Text = produkt.Nazwa;
         CenaEntry.Text = produkt.Cena.ToString();
         IloscEntry.Text = produkt.Ilosc.ToString();
-        KategoriaPicker.SelectedItem = produkt.Kategoria;
-        produkt.Kategoria = KategoriaPicker.SelectedItem?.ToString();
+        DostepnoscSwitch.IsToggled = produkt.Dostepnosc;
         //KategoriaPicker.SelectedItem = produkt.Kategoria;
+
     }
 
     // ... konstruktor z parametrem i Wroc_Clicked bez zmian
