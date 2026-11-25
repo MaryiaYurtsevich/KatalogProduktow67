@@ -37,8 +37,8 @@
             <TextBox x:Name="NazwaTextBox" Text="{Binding Nazwa}" />
             <TextBlock Text="Cena:" FontSize="18" FontWeight="Bold"/>
             <TextBox x:Name="CenaTextBox" Text="{Binding Cena, StringFormat={}{0:F2}zł}" />
-            <TextBlock Text="Kategoria:" FontSize="18" FontWeight="Bold"/>
-       >
+            <TextBlock Text="Kategoria:" FontSize="18" FontWeight="Bold" />
+    
             <ComboBox x:Name="KategoriaComboBox">
                 <ComboBoxItem Content="Elektronika" />
                 <ComboBoxItem Content="Odzież" />

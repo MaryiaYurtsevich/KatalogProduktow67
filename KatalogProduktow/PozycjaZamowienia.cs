@@ -15,6 +15,6 @@ namespace KatalogProduktow
             Ilosc = ilosc;
         }
         public double Wartosc => Produkt.Cena * Ilosc;
-        public void DodajQuantity(int ilosc) => Ilosc += ilosc;
+        public void DodajIlosc(int ilosc) => Ilosc += ilosc;
     }
 }

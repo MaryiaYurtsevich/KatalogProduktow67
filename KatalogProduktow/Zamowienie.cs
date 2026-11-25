@@ -11,7 +11,7 @@ namespace KatalogProduktow
         public IReadOnlyList<PozycjaZamowienia> Pozycje => pozycje;
 
         //metoda do dodawania pozycji zamówienia
-        public void Dodaj(Produkt produkt, int ilosc)
+        public void Dodaj(IWyceniany produkt, int ilosc)
         {
             //najpierw sprawdzamy czy ilość jest poprawna
             if (ilosc <= 0)
@@ -19,7 +19,7 @@ namespace KatalogProduktow
             //jeśli już istnieje taka pozycja to zwiększamy jej ilość, w przeciwnym razie dodajemy nową pozycję
             var istniejacaPozycja = pozycje.FirstOrDefault(p => p.Produkt == produkt);
             if (istniejacaPozycja != null)
-                istniejacaPozycja.DodajQuantity(ilosc);
+                istniejacaPozycja.DodajIlosc(ilosc);
             else
                 pozycje.Add(new PozycjaZamowienia(produkt, ilosc));
         }

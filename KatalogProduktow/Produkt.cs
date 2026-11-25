@@ -60,6 +60,22 @@ namespace KatalogProduktow
             Ilosc < 5 ? "ostatnie sztuki" :
             "dostępny";
 
+        private bool dostepnosc;
+
+        public bool Dostepnosc
+        {
+            get => dostepnosc;
+            set
+            {
+                if (dostepnosc != value)
+                {
+                    dostepnosc = value;
+                    Zmiana(nameof(Dostepnosc));
+                }
+            }
+        }
+
+        public string OpisProduktu => Opis();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
