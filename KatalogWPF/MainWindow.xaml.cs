@@ -30,5 +30,11 @@ namespace KatalogWPF
             LiczbaProduktowTextBlock.Text = produkty.Count.ToString();
             WartoscProduktowTextBlock.Text = produkty.Sum(p => p.Cena * p.Ilosc).ToString("F2") + "zł";
         }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //uruchom drugie okno - DockPanelDemo
+        //    DockPanelDemo dockPanelDemo = new DockPanelDemo();
+        //    dockPanelDemo.Show();
+        //}
     }
 }
